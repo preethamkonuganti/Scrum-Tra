@@ -10,6 +10,9 @@ import java.awt.image.BufferedImage;
 public abstract class Entity implements Renderer {
 
     public int x,y;
+
+    public int width;
+    public int height;
     GamePanel gp;
     KeyHandler kh;
 
@@ -23,5 +26,6 @@ public abstract class Entity implements Renderer {
         this.gp = gp;
         this.kh = kh;
     }
+
 
 }
