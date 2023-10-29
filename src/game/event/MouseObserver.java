@@ -39,7 +39,6 @@ public class MouseObserver {
     }
 
     private boolean isEntityClicked(Entity e, int mouseX, int mouseY){
-//        TODO("Check for mouse pointer click collision with the entity")
-        return true;
+        return mouseX >= e.x && mouseX <= e.x + e.getWidth() && mouseY >= e.y && mouseY <= e.y + e.getHeight();
     }
 }

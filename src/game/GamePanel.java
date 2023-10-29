@@ -3,7 +3,7 @@ package game;
 import game.event.KeyHandler;
 import game.event.MouseObserver;
 import game.screen.Screen;
-//import game.screen.WelcomeScreen;
+import game.screen.WelcomeScreen;
 
 import javax.swing.*;
 import java.awt.*;
@@ -40,7 +40,7 @@ public class GamePanel extends JPanel implements Runnable, MouseListener {
         mouseObserver = MouseObserver.getInstance();
         this.setFocusable(true);
         screens = new ArrayList<>();
-//        screens.add(new WelcomeScreen(this,kh));
+        screens.add(new WelcomeScreen(this,kh));
 
         startGameThread();
     }
