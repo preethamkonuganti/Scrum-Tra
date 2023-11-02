@@ -4,6 +4,7 @@ import game.Renderer;
 import game.event.KeyHandler;
 import game.GamePanel;
 import game.event.MouseClickInterface;
+import game.event.MouseObserver;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -31,7 +32,12 @@ public abstract class Entity implements Renderer, MouseClickInterface {
 
 
     public void setOnClickListener(MouseClickInterface listener){
+        MouseObserver.getInstance().addObserver(this);
         this.mouseClickListener = listener;
+    }
+
+    public void removeOnClickListener(){
+        MouseObserver.getInstance().removeObserver(this);
     }
 
     @Override
