@@ -1,5 +1,6 @@
 package game.entity;
 
+import game.util.SpriteParser;
 import game.event.KeyHandler;
 import game.GamePanel;
 
@@ -7,66 +8,72 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.List;
 
-public class Character extends Entity{
+public class Character extends Entity {
 
+    int spriteMax = 0;
 
-    public Character(GamePanel gp, KeyHandler kh) {
+    public Character(GamePanel gp, KeyHandler kh, int x, int y, String spritePath) {
         super(gp, kh);
+        this.x = x;
+        this.y = y;
+        atk = new BufferedImage[10];
+        getAttackImgs(spritePath);
+    }
 
-        atk  = new BufferedImage[10];
-        getAttackImgs();
+    public Character(GamePanel gp, KeyHandler kh, int x, int y, int width, int height, String spritePath) {
+        super(gp, kh);
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        getAttackImgs(spritePath);
     }
 
     @Override
     public void update() {
 
-        spriteCounter+=2;
-        if(spriteCounter > 10){
+        spriteCounter += 1;
+        if (spriteCounter > spriteMax) {
             spriteIndex += 1;
-            if(spriteIndex >9){
+            if (spriteIndex > spriteMax - 1) {
                 spriteIndex = 0;
             }
             spriteCounter = 0;
         }
     }
 
-
     @Override
     public void draw(Graphics2D g) {
 
-        g.drawImage(atk[spriteIndex],x,y,525,275,null);
+        g.drawImage(atk[spriteIndex], x, y, width, height, null);
     }
 
-    private void getAttackImgs(){
+    private void getAttackImgs(String spritePath) {
         try {
-//            atk[0] = ImageIO.read(getClass().getResourceAsStream("/attack/tile000.png"));
-//            atk[1] = ImageIO.read(getClass().getResourceAsStream("/attack/tile001.png"));
-//            atk[2] = ImageIO.read(getClass().getResourceAsStream("/attack/tile002.png"));
-//            atk[3] = ImageIO.read(getClass().getResourceAsStream("/attack/tile003.png"));
-//            atk[4] = ImageIO.read(getClass().getResourceAsStream("/attack/tile004.png"));
 
+            SpriteParser parser = SpriteParser.getInstance();
+            List<String> paths = parser.parseFileIntoSequence(spritePath);
+            spriteMax = paths.size();
 
-            atk[0] = ImageIO.read(getClass().getResourceAsStream("/seller/Seller_01_Animation_000.png"));
-            atk[1] = ImageIO.read(getClass().getResourceAsStream("/seller/Seller_01_Animation_001.png"));
-            atk[2] = ImageIO.read(getClass().getResourceAsStream("/seller/Seller_01_Animation_002.png"));
-            atk[3] = ImageIO.read(getClass().getResourceAsStream("/seller/Seller_01_Animation_003.png"));
-            atk[4] = ImageIO.read(getClass().getResourceAsStream("/seller/Seller_01_Animation_004.png"));
+            atk = new BufferedImage[paths.size()];
+            int i = 0;
+            for (String s : paths) {
+                atk[i] = ImageIO.read(getClass().getResourceAsStream(s));
+                i++;
+            }
 
-            atk[5] = ImageIO.read(getClass().getResourceAsStream("/seller/Seller_01_Animation_005.png"));
-            atk[6] = ImageIO.read(getClass().getResourceAsStream("/seller/Seller_01_Animation_006.png"));
-            atk[7] = ImageIO.read(getClass().getResourceAsStream("/seller/Seller_01_Animation_007.png"));
-            atk[8] = ImageIO.read(getClass().getResourceAsStream("/seller/Seller_01_Animation_008.png"));
-            atk[9] = ImageIO.read(getClass().getResourceAsStream("/seller/Seller_01_Animation_009.png"));
+            if (this.height == 0 && this.width == 0) {
+                this.width = atk[0].getWidth() / 8;
+                this.height = atk[0].getHeight() / 8;
+            }
+
+            System.out.println("WIDTH = " + width);
 
         } catch (IOException e) {
 
         }
-
-
-    }
-
-    public void add(double x){
 
     }
 
