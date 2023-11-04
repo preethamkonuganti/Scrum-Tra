@@ -53,4 +53,8 @@ public class Text extends Entity {
     public void setFontFamily(String fontFamily) {
         this.fontFamily = fontFamily;
     }
+
+    public int getStringWidth(){
+        return (int)((value.length()*36)*0.56);
+    }
 }

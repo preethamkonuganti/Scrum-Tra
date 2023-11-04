@@ -1,0 +1,5 @@
+/attack/tile000.png
+/attack/tile001.png
+/attack/tile002.png
+/attack/tile003.png
+/attack/tile004.png

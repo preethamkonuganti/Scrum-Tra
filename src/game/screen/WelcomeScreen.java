@@ -1,40 +1,73 @@
 package game.screen;
 
-import game.entity.Entity;
-import game.entity.Character;
-import game.entity.Text;
-import game.entity.TextInputBox;
-import game.event.KeyHandler;
 import game.GamePanel;
+import game.entity.*;
+import game.entity.Character;
+import game.event.KeyHandler;
+import game.event.MouseClickInterface;
 
-import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.util.function.Consumer;
 
-public class WelcomeScreen extends Screen {
-    private JTextField usernameInputField;
+public class WelcomeScreen extends Screen{
+
 
     public WelcomeScreen(GamePanel gp, KeyHandler kh) {
         super(gp, kh);
 
-        Text title = new Text("Welcome Screen", gp, kh);
-        int screenWidth = gp.getWidth();
-        int screenHeight = gp.getHeight();
-        title.x = (screenWidth) / 2;
+        Text title = new Text("SCRUM - TRA",gp ,kh);
+        title.x = (gp.width - title.getStringWidth())/2;
         title.y = 100;
 
-        Character genie = new Character(gp, kh);
-        genie.x = (screenWidth - 525) / 2;
-        genie.y = (screenHeight - 275) / 2;
+        Character genie = new Character(gp,kh,164, 400, 400, 200, "/Environment.txt");
 
-        TextInputBox textInputBox = new TextInputBox(gp,kh);
+        Character genie2 = new Character(gp,kh,850, 380, 400, 200, "/seller2.txt");
+
+        Character genie3 = new Character(gp,kh,510, 140, 400, 200, "/seller3.txt");
+
+        CustomTextInput input = new CustomTextInput(gp,kh);
+        input.x = 600;
+        input.y = 480;
+
+
+        ImageButton g3 = new ImageButton(gp,kh,647,613,160,80);
+        g3.setBackgroundImage("/next.png");
+
+        Character arrowLtR = new Character(gp,kh,290,240,180,100,"/arrow.txt");
+
+        Character arrowRtL = new Character(gp,kh,940,240,180,100,"/arrow_toR.txt");
+
+        Character asset1 = new Character(gp, kh,1140,600, 140,120,"/asset.txt");
+
+
+
+        Character arrow3 = new Character(gp, kh,380,620, 700,140,"/arrow3.txt");
+
+
+        CustomTextInput textInput = new CustomTextInput(gp,kh);
+        textInput.x = 100;
+        textInput.y = 100;
+        textInput.hint = "Type your name";
 
         entities.add(title);
         entities.add(genie);
-        entities.add(textInputBox);
-    }
+        entities.add(genie2);
+        entities.add(genie3);
+        entities.add(input);
+        entities.add(g3);
+        entities.add(arrowLtR);
+        entities.add(arrowRtL);
+        entities.add(asset1);
+        entities.add(arrow3);
 
+        g3.setOnClickListener(new MouseClickInterface() {
+            @Override
+            public void onClicked() {
+                System.out.println("Genie clicked");
+            }
+        });
+
+    }
 
     @Override
     public void draw(Graphics2D g) {
@@ -45,6 +78,7 @@ public class WelcomeScreen extends Screen {
             }
         });
     }
+
     @Override
     public void update() {
         entities.forEach(new Consumer<Entity>() {

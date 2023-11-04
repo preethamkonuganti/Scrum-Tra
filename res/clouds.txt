@@ -1,0 +1,5 @@
+/cloud/clouds_shape8_1.png
+/cloud/clouds_shape8_2.png
+/cloud/clouds_shape8_3.png
+/cloud/clouds_shape8_4.png
+/cloud/clouds_shape8_5.png

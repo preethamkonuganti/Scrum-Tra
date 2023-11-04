@@ -10,15 +10,14 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
-import java.util.function.Consumer;
 
-public class GamePanel extends JPanel implements Runnable, MouseListener {
+public class GamePanel extends JPanel implements Runnable, MouseListener  {
 
 
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
-    int width = screenSize.width;
-    int height = screenSize.height;
+    public int width = screenSize.width;
+    public int height = screenSize.height;
 
     int FPS = 60;
 
@@ -28,6 +27,7 @@ public class GamePanel extends JPanel implements Runnable, MouseListener {
 
     ArrayList<Screen> screens;
     MouseObserver mouseObserver;
+
 
 
 
@@ -43,13 +43,6 @@ public class GamePanel extends JPanel implements Runnable, MouseListener {
         screens.add(new WelcomeScreen(this,kh));
 
         startGameThread();
-    }
-
-    public int getWidth(){
-        return  this.width;
-    }
-    public int getHeight(){
-        return  this.height;
     }
 
     private void startGameThread() {
@@ -94,26 +87,17 @@ public class GamePanel extends JPanel implements Runnable, MouseListener {
 
         Graphics2D g2 = (Graphics2D) g;
 
-        screens.forEach(new Consumer<Screen>() {
-            @Override
-            public void accept(Screen screen) {
-                screen.draw(g2);
-            }
-        });
+
+        screens.get(screens.size()-1).draw(g2);
 
 
     }
 
     private void update() {
 
-        screens.forEach(new Consumer<Screen>() {
-            @Override
-            public void accept(Screen screen) {
-                screen.update();
-            }
-        });
-    }
 
+        screens.get(screens.size()-1).update();
+    }
 
 
     @Override
