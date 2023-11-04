@@ -45,6 +45,13 @@ public class GamePanel extends JPanel implements Runnable, MouseListener {
         startGameThread();
     }
 
+    public int getWidth(){
+        return  this.width;
+    }
+    public int getHeight(){
+        return  this.height;
+    }
+
     private void startGameThread() {
         Thread t = new Thread(this);
         isGameRunning = true;
@@ -108,6 +115,7 @@ public class GamePanel extends JPanel implements Runnable, MouseListener {
     }
 
 
+
     @Override
     public void mouseClicked(MouseEvent e) {
         mouseObserver.onScreenClicked(e.getX(),e.getY());
@@ -132,4 +140,5 @@ public class GamePanel extends JPanel implements Runnable, MouseListener {
     public void mouseExited(MouseEvent e) {
 
     }
+
 }

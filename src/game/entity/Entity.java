@@ -15,7 +15,10 @@ public abstract class Entity implements Renderer, MouseClickInterface {
 
     public int x,y;
 
-    int width, height;
+
+    public int width;
+    public int height;
+
     GamePanel gp;
     KeyHandler kh;
 
@@ -52,4 +55,5 @@ public abstract class Entity implements Renderer, MouseClickInterface {
     public int getHeight() {
         return height;
     }
+
 }
