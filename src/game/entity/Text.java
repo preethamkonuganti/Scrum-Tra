@@ -8,10 +8,19 @@ import java.awt.*;
 public class Text extends Entity {
 
     String value;
+    int fontSize = 36;
+
+    String fontFamily = "Serif";
 
     public Text(String value, GamePanel gp, KeyHandler kh) {
         super(gp, kh);
         this.value = value;
+        width = getTextWidth();
+    }
+
+
+    public String getValue() {
+        return value;
     }
 
     @Override
@@ -22,7 +31,7 @@ public class Text extends Entity {
     @Override
     public void draw(Graphics2D g) {
         g.setColor(Color.black);
-        g.fill3DRect(x-18,y-36,(int)(324*0.8)+18,48,true);
+        g.fill3DRect(x-18,y-36,width+18,height,true);
 
         g.setColor(Color.WHITE);
         setFont(g);
@@ -30,6 +39,18 @@ public class Text extends Entity {
     }
 
     private void setFont(Graphics2D g){
-        g.setFont(new Font("Serif", Font.ITALIC, 36));
+        g.setFont(new Font(fontFamily, Font.ITALIC, fontSize));
+    }
+
+    private int getTextWidth(){
+        return (int)(value.length()*fontSize*0.5);
+    }
+
+    public void setFontSize(int fontSize){
+        this.fontSize = fontSize;
+    }
+
+    public void setFontFamily(String fontFamily) {
+        this.fontFamily = fontFamily;
     }
 }
