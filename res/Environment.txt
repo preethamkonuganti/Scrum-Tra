@@ -1,0 +1,10 @@
+/seller/Seller_01_Animation_000.png
+/seller/Seller_01_Animation_001.png
+/seller/Seller_01_Animation_002.png
+/seller/Seller_01_Animation_003.png
+/seller/Seller_01_Animation_004.png
+/seller/Seller_01_Animation_005.png
+/seller/Seller_01_Animation_006.png
+/seller/Seller_01_Animation_007.png
+/seller/Seller_01_Animation_008.png
+/seller/Seller_01_Animation_009.png
