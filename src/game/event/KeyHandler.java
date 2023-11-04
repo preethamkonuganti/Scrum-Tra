@@ -29,6 +29,8 @@ public class KeyHandler implements KeyListener {
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
 
+//        System.out.println("Time : "+System.currentTimeMillis());
+
         if(key == KeyEvent.VK_UP){
             isUpKeyPressed = true;
         }
@@ -115,23 +117,24 @@ public class KeyHandler implements KeyListener {
         if(key == KeyEvent.VK_W){
             characterPressed[22] = true;
         }
-        if(key == KeyEvent.VK_V){
+
+        if(key == KeyEvent.VK_X){
             characterPressed[23] = true;
         }
-        if(key == KeyEvent.VK_X){
+        if(key == KeyEvent.VK_Y){
             characterPressed[24] = true;
         }
-        if(key == KeyEvent.VK_Y){
-            characterPressed[25] = true;
-        }
         if(key == KeyEvent.VK_Z){
-            characterPressed[26] = true;
+            characterPressed[25] = true;
+
         }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
         int key = e.getKeyCode();
+
+//        System.out.println("Time Released: "+System.currentTimeMillis());
 
         if(key == KeyEvent.VK_UP){
             isUpKeyPressed = false;
@@ -220,17 +223,14 @@ public class KeyHandler implements KeyListener {
         if(key == KeyEvent.VK_W){
             characterPressed[22] = false;
         }
-        if(key == KeyEvent.VK_V){
+        if(key == KeyEvent.VK_X){
             characterPressed[23] = false;
         }
-        if(key == KeyEvent.VK_X){
+        if(key == KeyEvent.VK_Y){
             characterPressed[24] = false;
         }
-        if(key == KeyEvent.VK_Y){
-            characterPressed[25] = false;
-        }
         if(key == KeyEvent.VK_Z){
-            characterPressed[26] = false;
+            characterPressed[25] = false;
         }
     }
 }
