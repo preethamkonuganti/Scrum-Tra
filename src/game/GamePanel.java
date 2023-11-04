@@ -32,11 +32,17 @@ public class GamePanel extends JPanel implements Runnable{
         this.setDoubleBuffered(true);
         this.addKeyListener(kh);
         this.setFocusable(true);
-
         screens = new ArrayList<>();
         screens.add(new WelcomeScreen(this,kh));
 
         startGameThread();
+    }
+
+    public int getWidth(){
+        return  this.width;
+    }
+    public int getHeight(){
+        return  this.height;
     }
 
     private void startGameThread() {
@@ -99,4 +105,6 @@ public class GamePanel extends JPanel implements Runnable{
             }
         });
     }
+
+
 }
