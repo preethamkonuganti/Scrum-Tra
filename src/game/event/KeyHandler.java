@@ -117,6 +117,7 @@ public class KeyHandler implements KeyListener {
         if(key == KeyEvent.VK_W){
             characterPressed[22] = true;
         }
+
         if(key == KeyEvent.VK_X){
             characterPressed[23] = true;
         }
@@ -125,6 +126,7 @@ public class KeyHandler implements KeyListener {
         }
         if(key == KeyEvent.VK_Z){
             characterPressed[25] = true;
+
         }
     }
 
