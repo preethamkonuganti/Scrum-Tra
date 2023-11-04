@@ -1,15 +1,18 @@
 package game;
 
 import game.event.KeyHandler;
+import game.event.MouseObserver;
 import game.screen.Screen;
 import game.screen.WelcomeScreen;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.function.Consumer;
 
-public class GamePanel extends JPanel implements Runnable{
+public class GamePanel extends JPanel implements Runnable, MouseListener {
 
 
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -24,6 +27,8 @@ public class GamePanel extends JPanel implements Runnable{
     KeyHandler kh = new KeyHandler();
 
     ArrayList<Screen> screens;
+    MouseObserver mouseObserver;
+
 
 
     public GamePanel() {
@@ -31,6 +36,8 @@ public class GamePanel extends JPanel implements Runnable{
         this.setBackground(Color.decode("#150725"));
         this.setDoubleBuffered(true);
         this.addKeyListener(kh);
+        this.addMouseListener(this);
+        mouseObserver = MouseObserver.getInstance();
         this.setFocusable(true);
         screens = new ArrayList<>();
         screens.add(new WelcomeScreen(this,kh));
@@ -98,6 +105,7 @@ public class GamePanel extends JPanel implements Runnable{
     }
 
     private void update() {
+
         screens.forEach(new Consumer<Screen>() {
             @Override
             public void accept(Screen screen) {
@@ -106,5 +114,31 @@ public class GamePanel extends JPanel implements Runnable{
         });
     }
 
+
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        mouseObserver.onScreenClicked(e.getX(),e.getY());
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
 
 }
