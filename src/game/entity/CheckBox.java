@@ -52,5 +52,16 @@ public class CheckBox extends Entity{
             isChecked = true;
         }
     }
+    public void setChecked(boolean isChecked){
+        this.isChecked = isChecked;
+    }
+
+    public boolean isChecked(){
+        return isChecked;
+    }
+
+    public int getTitleWidth(){
+        return (int)((title.length()*36)*0.56);
+    }
 
 }
