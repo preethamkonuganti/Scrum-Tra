@@ -6,7 +6,6 @@ import game.event.KeyHandler;
 import java.awt.*;
 
 public class CustomCheckBox extends Entity{
-
     private String title = "Test checkbox";
     private boolean isChecked = false;
 
