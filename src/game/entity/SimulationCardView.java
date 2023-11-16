@@ -4,21 +4,25 @@ import game.GamePanel;
 import game.event.KeyHandler;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SimulationCardView extends Entity{
 
-    private String cardTitle;
-    private String description;
-    private String createdBy;
+    private String cardTitle = "";
+    private String description = "";
+    private String createdBy = "";
+    private int ratings = 0; //star rating out of 5
 
-    private int ratings; //star rating out of 5
+    private List<String> descToRender;
 
-    public SimulationCardView(GamePanel gp, KeyHandler kh, int x, int y, int width, int height) {
+    public SimulationCardView(GamePanel gp, KeyHandler kh, int x, int y) {
         super(gp, kh);
         this.x = x;
         this.y = y;
-        this.width = width;
-        this.height = height;
+        this.width = 140;
+        this.height = 160;
+        descToRender = new ArrayList<>();
     }
 
     public void setCardTitle(String cardTitle){
@@ -27,6 +31,7 @@ public class SimulationCardView extends Entity{
 
     public void setDescription(String description){
         this.description = description;
+        splitDescription();
     }
 
     public void setCreatedBy(String createdBy) {
@@ -43,16 +48,39 @@ public class SimulationCardView extends Entity{
         g.fillRect(x,y,width,height);
 
         g.setColor(Color.white);
-        g.fillRect(x+16, y+16,width-32, height-32);
+        g.fillRect(x+8, y+8,width-16, height-16);
 
         g.setColor(Color.blue);
-        g.drawString(cardTitle,x+20,y+20);
-        g.drawString(description,x+18,y+44);
+        g.drawString(cardTitle,x+12,y+20);
+        int ty = 40;
+        for(String d : descToRender){
+            g.drawString(d,x+10,y+ty);
+            ty += 20;
+        }
 
     }
 
     @Override
     public void update() {
 
+    }
+
+    private void splitDescription(){
+        System.out.println("Len : "+description.length());
+        if(description.length() > 17) {
+            int dCount = 0;
+            String _x = "";
+           for(char dc : description.toCharArray()){
+               _x += dc;
+               dCount += 1;
+               if(dCount % 17 == 0){
+                   descToRender.add(_x);
+                   _x = "";
+                   dCount = 0;
+               }
+           }
+           if(!_x.isEmpty())
+               descToRender.add(_x);
+        }
     }
 }
