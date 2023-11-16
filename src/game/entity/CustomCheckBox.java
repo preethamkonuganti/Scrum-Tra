@@ -5,31 +5,34 @@ import game.event.KeyHandler;
 
 import java.awt.*;
 
-public class CheckBox extends Entity{
+public class CustomCheckBox extends Entity{
 
-    private String title = "";
+    private String title = "Test checkbox";
     private boolean isChecked = false;
 
-    public CheckBox(GamePanel gp, KeyHandler kh, int x, int y, int width, int height) {
+    public CustomCheckBox(GamePanel gp, KeyHandler kh, int x, int y, String title) {
         super(gp, kh);
         this.x = x;
         this.y = y;
-        this.width = width;
-        this.height = height;
+        this.height = 40;
+        this.width = getTitleWidth();
     }
 
     @Override
     public void draw(Graphics2D g) {
+
         // logic for box rendering
-        g.setColor(Color.GREEN);
-        g.drawRect(x, y, 48, 48);
+        g.setColor(Color.decode("#56CCF2"));
+        g.drawRect(x, y, 28, 28);
+        //checkbox inner white background
+
         g.setColor(Color.white);
-        g.fillRect(x+2,y+2,44,44); //checkbox inner white background
-        g.setColor(Color.white);
-        g.drawString(title,x+72, y);
+        setFont(g);
+        g.drawString(title,x+44, y+24);
+
         if(isChecked){
-            g.setColor(Color.green);
-            g.fillRect(x+10,y+10,28,28); //checked button rendering
+            g.setColor(Color.white);
+            g.fillRect(x+5,y+5,18,18); //checked button rendering
         }
     }
 
@@ -45,6 +48,7 @@ public class CheckBox extends Entity{
     }
 
     private void toggleCheck() {
+        System.out.println("Toggled");
         if(isChecked){
             isChecked = false;
         }
@@ -52,6 +56,7 @@ public class CheckBox extends Entity{
             isChecked = true;
         }
     }
+
     public void setChecked(boolean isChecked){
         this.isChecked = isChecked;
     }
@@ -64,4 +69,7 @@ public class CheckBox extends Entity{
         return (int)((title.length()*36)*0.56);
     }
 
+    private void setFont(Graphics2D g){
+        g.setFont(new Font("Serif", Font.ITALIC, 28));
+    }
 }
