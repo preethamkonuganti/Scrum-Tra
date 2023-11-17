@@ -1,0 +1,7 @@
+Scrum master- Good Morning team!! Let's kick off our sprint planning.Considering our team's capacity, how much work can we realistically commit to for this sprint.Here is the highest priority tasks. What are your thoughts team ??
+Developer(1)- I can handle this task
+Scrum Master- Are there any dependencies we need to be aware of ??Any potential risks
+Developer(1) -I think this user story might be a bit more complex. Can we discuss and estimate the effort required?
+Developer(2)- I agree. Let's break down the tasks to get a more accurate estimate
+Tester(1)- I ccan handle the testing for this task.
+Scrum Master- Excellent planning, everyone!Our daily stand-ups will keep us on track. See you there!

@@ -1,0 +1,14 @@
+Scrum Ceremony - Daily Stand Up
+Scenario: Usual conversation flow between a Scrum master and developers:
+
+Scrum Master (SM): Good morning, team! How is everyone doing? Let's get started with our daily standup. Who wants to kick things off?
+
+Developer 1 (D1): I'll go first. Yesterday, I completed ---task---
+
+SM: Excellent, D1! What are you planning to work on today?
+
+D1: Today, I'll be working on -- task --
+
+SM: Sounds good. Any blockers or impediments?
+
+D1: No blockers for me. Smooth sailing so far.

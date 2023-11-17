@@ -1,0 +1,15 @@
+Scrum Ceremony: Sprint retrospective
+
+Scrum Master (SM): Welcome, everyone, to our sprint retrospective. Let's kick things off. What went well in this sprint?
+
+Developer 1 (D1): --improvements--
+
+SM: What did not go well?
+
+Developer 2 (D2): -- issues--
+
+SM: Excellent. Now, what could have gone better? Any challenges or areas for improvement?
+
+Developer 2 (D3): --suggestions--
+
+SM: Thank you for bringing that up. Let's make a note of that and find a solution.
