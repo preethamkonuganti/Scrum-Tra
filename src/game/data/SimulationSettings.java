@@ -14,16 +14,13 @@ public class SimulationSettings {
     private SimulationSettings(){
     }
 
-    public SimulationSettings getInstance(){
+    public static SimulationSettings getInstance(){
         if(instance == null ){
             instance = new SimulationSettings();
         }
         return instance;
     }
 
-    public static void setInstance(SimulationSettings instance) {
-        SimulationSettings.instance = instance;
-    }
 
     public int getNumOfSprints() {
         return numOfSprints;

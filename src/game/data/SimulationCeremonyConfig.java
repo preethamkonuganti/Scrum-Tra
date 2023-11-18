@@ -15,15 +15,12 @@ public class SimulationCeremonyConfig {
     private SimulationCeremonyConfig(){
     }
 
-    public SimulationCeremonyConfig getInstance(){
+    public static SimulationCeremonyConfig getInstance(){
         if(instance == null)
             instance = new SimulationCeremonyConfig();
         return instance;
     }
 
-    public static void setInstance(SimulationCeremonyConfig instance) {
-        SimulationCeremonyConfig.instance = instance;
-    }
 
     public boolean isSprintPlanningSelected() {
         return isSprintPlanningSelected;

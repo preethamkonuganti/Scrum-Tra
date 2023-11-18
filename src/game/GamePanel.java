@@ -2,8 +2,9 @@ package game;
 
 import game.event.KeyHandler;
 import game.event.MouseObserver;
-import game.screen.Screen;
-import game.screen.WelcomeScreen;
+import game.navigation.Navigation;
+import game.navigation.NavigationListener;
+import game.screen.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +12,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
-public class GamePanel extends JPanel implements Runnable, MouseListener  {
+public class GamePanel extends JPanel implements Runnable, MouseListener , NavigationListener {
 
 
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -39,9 +40,11 @@ public class GamePanel extends JPanel implements Runnable, MouseListener  {
         this.addMouseListener(this);
         mouseObserver = MouseObserver.getInstance();
         this.setFocusable(true);
-        screens = new ArrayList<>();
-        screens.add(new WelcomeScreen(this,kh));
 
+        Navigation.getInstance().registerNavigationListener(this);
+        Navigation.getInstance().addScreen(new WelcomeScreen(this, kh));
+
+        screens = new ArrayList<>();
         startGameThread();
     }
 
@@ -87,17 +90,14 @@ public class GamePanel extends JPanel implements Runnable, MouseListener  {
 
         Graphics2D g2 = (Graphics2D) g;
 
-
-        screens.get(screens.size()-1).draw(g2);
-
+        Navigation.getInstance().getCurrentScreen().draw(g2);
 
     }
 
     private void update() {
-
-
-        screens.get(screens.size()-1).update();
+        Navigation.getInstance().getCurrentScreen().update();
     }
+
 
 
     @Override
@@ -125,4 +125,28 @@ public class GamePanel extends JPanel implements Runnable, MouseListener  {
 
     }
 
+    @Override
+    public void onNext() {
+        Navigation.getInstance().getCurrentScreen().pauseObserver();
+        if(Navigation.getInstance().getCurrentScreen() instanceof WelcomeScreen){
+            Navigation.getInstance().addScreen(new SelectRoleScreen(this,kh));
+        }
+        else if(Navigation.getInstance().getCurrentScreen() instanceof SelectRoleScreen){
+            Navigation.getInstance().addScreen(new SelectProficiencyScreen(this,kh));
+        }
+        else if(Navigation.getInstance().getCurrentScreen() instanceof SelectProficiencyScreen){
+            Navigation.getInstance().addScreen(new SimulationSettingsScreen(this,kh));
+        }
+        else if(Navigation.getInstance().getCurrentScreen() instanceof SimulationSettingsScreen){
+            Navigation.getInstance().addScreen(new SelectSimulationCeremonyScreen(this,kh));
+        }
+    }
+
+    @Override
+    public void onBack() {
+
+        Navigation.getInstance().pop();
+        Navigation.getInstance().getCurrentScreen().resumeObserver();
+
+    }
 }

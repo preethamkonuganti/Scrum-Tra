@@ -1,24 +1,21 @@
 package game.entity;
 
+import game.Lifecycle;
 import game.Renderer;
 import game.event.KeyHandler;
 import game.GamePanel;
 import game.event.MouseClickInterface;
 import game.event.MouseObserver;
 
-import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public abstract class Entity implements Renderer, MouseClickInterface {
+public abstract class Entity implements Renderer, MouseClickInterface, Lifecycle {
 
     private MouseClickInterface mouseClickListener;
 
     public int x,y;
 
-
-    public int width;
-    public int height;
-
+    int width, height;
     GamePanel gp;
     KeyHandler kh;
 
@@ -26,6 +23,8 @@ public abstract class Entity implements Renderer, MouseClickInterface {
 
     int spriteCounter = 0;
     int spriteIndex = 0;
+
+    boolean isEnabled = true;
 
 
     public Entity(GamePanel gp, KeyHandler kh) {
@@ -39,9 +38,6 @@ public abstract class Entity implements Renderer, MouseClickInterface {
         this.mouseClickListener = listener;
     }
 
-    public void removeOnClickListener(){
-        MouseObserver.getInstance().removeObserver(this);
-    }
 
     @Override
     public void onClicked() {
@@ -56,4 +52,13 @@ public abstract class Entity implements Renderer, MouseClickInterface {
         return height;
     }
 
+    @Override
+    public void pauseObserver() {
+        MouseObserver.getInstance().removeObserver(this);
+    }
+
+    @Override
+    public void resumeObserver() {
+        MouseObserver.getInstance().addObserver(this);
+    }
 }
