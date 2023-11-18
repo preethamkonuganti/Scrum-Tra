@@ -5,7 +5,12 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SimulationStoryParserTest {
-
+    @Test
+    public void testParseFileIntoSequence() {
+        SimulationStoryParser parser = SimulationStoryParser.getInstance();
+        List<String> sequence = parser.parseFileIntoSequence("/res/parseFileToSequence.txt");
+        assertEquals("Read the file", sequence.get(0));
+    }
 
     @Test
     public void testParseSimulationStory() {
