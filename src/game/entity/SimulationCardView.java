@@ -47,12 +47,12 @@ public class SimulationCardView extends Entity{
         g.setColor(Color.decode("#5F259F"));
         g.fillRect(x,y,width,height);
 
-        g.setColor(Color.white);
+        g.setColor(Color.black);
         g.fillRect(x+8, y+8,width-16, height-16);
 
-        g.setColor(Color.blue);
-        g.drawString(cardTitle,x+12,y+20);
-        int ty = 40;
+        g.setColor(Color.white);
+        g.drawString(cardTitle,x+12,y+28);
+        int ty = 48;
         for(String d : descToRender){
             g.drawString(d,x+10,y+ty);
             ty += 20;
