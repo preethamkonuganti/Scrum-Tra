@@ -1,0 +1,19 @@
+<convo-by=SM>
+Good morning, team! How is everyone doing? Let's get started with our daily standup.
+Who wants to kick things off?
+</convo>
+<convo-by=D1>
+I'll go first. Yesterday, I completed ---task---
+</convo>
+<convo-by=SM>
+Excellent, D1! What are you planning to work on today?
+</convo>
+<convo-by=D1>
+D1: Today, I'll be working on -- task --
+</convo>
+<convo-by=SM>
+SM: Sounds good. Any blockers or impediments?
+</convo>
+<convo-by=D1>
+D1: No blockers for me. Smooth sailing so far.
+</convo>
