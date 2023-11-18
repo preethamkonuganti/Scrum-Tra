@@ -61,4 +61,8 @@ public abstract class Entity implements Renderer, MouseClickInterface, Lifecycle
     public void resumeObserver() {
         MouseObserver.getInstance().addObserver(this);
     }
+
+    public BufferedImage[] getSpriteImages() {
+        return atk;
+    }
 }
