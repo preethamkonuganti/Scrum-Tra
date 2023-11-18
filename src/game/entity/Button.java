@@ -32,11 +32,6 @@ public class Button extends Text implements ButtonInterface{
         backGroundColor = color;
     }
 
-    @Override
-    public void setTextColor(Color color) {
-
-    }
-
 
     @Override
     public void draw(Graphics2D g) {

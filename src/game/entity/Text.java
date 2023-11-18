@@ -8,19 +8,19 @@ import java.awt.*;
 public class Text extends Entity {
 
     String value;
-    int fontSize = 36;
 
-    String fontFamily = "Serif";
+    Color textColor = Color.black;
+
+    protected Color backGroundColor = Color.white;
+    protected int paddingStart = 18;
+    protected int paddingEnd = 18;
+    protected int paddingTop = 6;
+    protected int paddingBottom = 6;
+
 
     public Text(String value, GamePanel gp, KeyHandler kh) {
         super(gp, kh);
         this.value = value;
-        width = getTextWidth();
-    }
-
-
-    public String getValue() {
-        return value;
     }
 
     @Override
@@ -30,28 +30,27 @@ public class Text extends Entity {
 
     @Override
     public void draw(Graphics2D g) {
-        g.setColor(Color.black);
-        g.fill3DRect(x-18,y-36,width+18,height,true);
+        drawBackGround(g);
+        drawText(g);
+    }
 
-        g.setColor(Color.WHITE);
-        setFont(g);
-        g.drawString(value,x,y);
+    protected void drawBackGround(Graphics2D g) {
+        g.setColor(backGroundColor);
+        g.fillRect(x-paddingStart,y-36,getStringWidth()+paddingEnd,36+paddingBottom+paddingTop);
     }
 
     private void setFont(Graphics2D g){
-        g.setFont(new Font(fontFamily, Font.ITALIC, fontSize));
+        g.setFont(new Font("Serif", Font.ITALIC, 36));
     }
 
-    private int getTextWidth(){
-        return (int)(value.length()*fontSize*0.5);
+    public void setTextColor(Color color){
+        textColor = color;
     }
 
-    public void setFontSize(int fontSize){
-        this.fontSize = fontSize;
-    }
-
-    public void setFontFamily(String fontFamily) {
-        this.fontFamily = fontFamily;
+    protected void drawText(Graphics2D g){
+        g.setColor(textColor);
+        setFont(g);
+        g.drawString(value,x,y);
     }
 
     public int getStringWidth(){
