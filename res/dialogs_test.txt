@@ -1,0 +1,61 @@
+<convo-by=SM>
+Good morning, team! How is everyone doing? Let's get started with our daily standup.
+Who wants to kick things off?
+</convo>
+<convo-by=D1>
+I'll go first. Yesterday, I completed ---task--- and completed -- % of work done --.
+</convo>
+<convo-by=SM>
+Excellent, D1! What are you planning to work on today?
+</convo>
+<convo-by=D1>
+Today, I'll be working on -- task --
+</convo>
+<convo-by=SM>
+Sounds good. Any blockers or impediments?
+</convo>
+<convo-by=D1>
+No blockers for me. Smooth sailing so far.
+</convo>
+<convo-by=SM>
+what did you do yesterday?
+</convo>
+<convo-by=D2>
+Yesterday, I was working on ---task--- and completed -- % of work done --.
+</convo>
+<convo-by=SM>
+Good progress, D2! What's on your plate for today?
+</convo>
+<convo-by=D2>
+Today, I'll be jumping into ---task---.
+</convo>
+<convo-by=SM>
+That sounds promising. Any obstacles you're facing?
+</convo>
+<convo-by=D2>
+No blockers at the moment. Everything is on track.
+</convo>
+<convo-by=SM>
+Thanks, D2. Who's next to share?
+</convo>
+<convo-by=D3>
+I'll go. Yesterday, I worked on ---task--- and ran into a bit of a roadblock with ---issue---.
+</convo>
+<convo-by=SM>
+D3, could you use some help with that obstacle?
+</convo>
+<convo-by=D3>
+Yes, some input would be great. I'll reach out to D4 after the standup to discuss it further.
+</convo>
+<convo-by=SM>
+Team, let's make sure to sync up on that. D3, anything specific planned for today?
+</convo>
+<convo-by=D3>
+Today, I'll be focusing on resolving the issue and continuing with ---next task---.
+</convo>
+<convo-by=SM>
+Good plan, D3. Any other blockers from the team?
+</convo>
+<convo-by=SM>
+Alright, team. We're making good progress. If there's nothing else, let's drop off the call and continue working on our deliverables. Thank you everyone for joining. Have a great day!
+</convo>
