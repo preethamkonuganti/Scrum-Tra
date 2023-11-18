@@ -17,7 +17,7 @@ public class KeyHandler implements KeyListener {
     /**
      * characterPressed[] : size 26 : each index represents characters 0 - A and 25 - Z
      */
-    public  boolean characterPressed[] = new boolean[26];
+    public  boolean characterPressed[] = new boolean[36];
 
 
     @Override
@@ -117,7 +117,6 @@ public class KeyHandler implements KeyListener {
         if(key == KeyEvent.VK_W){
             characterPressed[22] = true;
         }
-
         if(key == KeyEvent.VK_X){
             characterPressed[23] = true;
         }
@@ -126,8 +125,43 @@ public class KeyHandler implements KeyListener {
         }
         if(key == KeyEvent.VK_Z){
             characterPressed[25] = true;
-
         }
+
+        /**
+         * For number input
+         */
+        if(key == KeyEvent.VK_0){
+            characterPressed[26] = true;
+        }
+        if(key == KeyEvent.VK_1){
+            characterPressed[27] = true;
+        }
+        if(key == KeyEvent.VK_2){
+            characterPressed[28] = true;
+        }
+        if(key == KeyEvent.VK_3){
+            characterPressed[29] = true;
+        }
+        if(key == KeyEvent.VK_4){
+            characterPressed[30] = true;
+        }
+        if(key == KeyEvent.VK_5){
+            characterPressed[31] = true;
+        }
+        if(key == KeyEvent.VK_6){
+            characterPressed[32] = true;
+        }
+        if(key == KeyEvent.VK_7){
+            characterPressed[33] = true;
+        }
+        if(key == KeyEvent.VK_8){
+            characterPressed[34] = true;
+        }
+        if(key == KeyEvent.VK_9){
+            characterPressed[35] = true;
+        }
+
+
     }
 
     @Override
@@ -231,6 +265,40 @@ public class KeyHandler implements KeyListener {
         }
         if(key == KeyEvent.VK_Z){
             characterPressed[25] = false;
+        }
+
+        /**
+         * For number input
+         */
+        if(key == KeyEvent.VK_0){
+            characterPressed[26] = false;
+        }
+        if(key == KeyEvent.VK_1){
+            characterPressed[27] = false;
+        }
+        if(key == KeyEvent.VK_2){
+            characterPressed[28] = false;
+        }
+        if(key == KeyEvent.VK_3){
+            characterPressed[29] = false;
+        }
+        if(key == KeyEvent.VK_4){
+            characterPressed[30] = false;
+        }
+        if(key == KeyEvent.VK_5){
+            characterPressed[31] = false;
+        }
+        if(key == KeyEvent.VK_6){
+            characterPressed[32] = false;
+        }
+        if(key == KeyEvent.VK_7){
+            characterPressed[33] = false;
+        }
+        if(key == KeyEvent.VK_8){
+            characterPressed[34] = false;
+        }
+        if(key == KeyEvent.VK_9){
+            characterPressed[35] = false;
         }
     }
 }
