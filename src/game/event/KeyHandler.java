@@ -19,11 +19,6 @@ public class KeyHandler implements KeyListener {
      */
     public  boolean characterPressed[] = new boolean[36];
 
-    /**
-     * characterPressed[] : size 26 : each index represents characters 0 - A and 25 - Z
-     */
-    public boolean numPresses[] = new boolean[10];
-
 
     @Override
     public void keyTyped(KeyEvent e) {
