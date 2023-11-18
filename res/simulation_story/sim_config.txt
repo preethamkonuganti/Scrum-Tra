@@ -1,0 +1,4 @@
+numOfSprints=2
+numOfStandupInOneSprint=2
+sizeOfTeam=5
+numOfUserStories=3

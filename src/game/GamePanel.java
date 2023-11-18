@@ -129,6 +129,9 @@ public class GamePanel extends JPanel implements Runnable, MouseListener , Navig
     public void onNext() {
         Navigation.getInstance().getCurrentScreen().pauseObserver();
         if(Navigation.getInstance().getCurrentScreen() instanceof WelcomeScreen){
+            Navigation.getInstance().addScreen(new SelectSimulationStoryScreen(this,kh));
+        }
+        else if(Navigation.getInstance().getCurrentScreen() instanceof SelectSimulationStoryScreen){
             Navigation.getInstance().addScreen(new SelectRoleScreen(this,kh));
         }
         else if(Navigation.getInstance().getCurrentScreen() instanceof SelectRoleScreen){
@@ -139,6 +142,9 @@ public class GamePanel extends JPanel implements Runnable, MouseListener , Navig
         }
         else if(Navigation.getInstance().getCurrentScreen() instanceof SimulationSettingsScreen){
             Navigation.getInstance().addScreen(new SelectSimulationCeremonyScreen(this,kh));
+        }
+        else if(Navigation.getInstance().getCurrentScreen() instanceof SelectSimulationCeremonyScreen){
+            Navigation.getInstance().addScreen(new SimulationScreen(this,kh));
         }
     }
 
