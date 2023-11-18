@@ -6,6 +6,7 @@ import game.data.SimulationSettings;
 import game.entity.*;
 import game.event.KeyHandler;
 import game.event.MouseClickInterface;
+import game.navigation.Navigation;
 
 import java.awt.*;
 import java.util.function.Consumer;
@@ -90,14 +91,14 @@ public class SimulationSettingsScreen extends Screen{
         backBtn.setOnClickListener(new MouseClickInterface() {
             @Override
             public void onClicked() {
-
+                Navigation.getInstance().navigateBack();
             }
         });
 
         nextBtn.setOnClickListener(new MouseClickInterface() {
             @Override
             public void onClicked() {
-
+                Navigation.getInstance().navigateToNext();
             }
         });
     }

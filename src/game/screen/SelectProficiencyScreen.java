@@ -6,6 +6,8 @@ import game.entity.Entity;
 import game.entity.ImageButton;
 import game.entity.Text;
 import game.event.KeyHandler;
+import game.event.MouseClickInterface;
+import game.navigation.Navigation;
 
 import java.awt.*;
 import java.util.function.Consumer;
@@ -55,6 +57,12 @@ public class SelectProficiencyScreen extends Screen{
         entities.add(g3);
 
 
+        g3.setOnClickListener(new MouseClickInterface() {
+            @Override
+            public void onClicked() {
+                Navigation.getInstance().navigateToNext();
+            }
+        });
 
     }
 
