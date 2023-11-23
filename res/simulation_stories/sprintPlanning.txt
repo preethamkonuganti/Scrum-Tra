@@ -1,0 +1,42 @@
+<convo-by=ScrumMaster>
+Scrum Master (SM): Good morning, team! Let's kick off our Sprint Planning. Considering our team's capacity, what's a realistic workload we can commit to for this sprint? Here are the top-priority tasks. Team, I'd love to hear your insights.
+</convo>
+<convo-by=Developer1>
+Developer 1 (D1): I'm up for tackling this task.
+</convo>
+<convo-by=ScrumMaster>
+SM: Fantastic, D1! Are there any dependencies or potential risks we should be mindful of?
+</convo>
+<convo-by=Developer1>
+D1: --dependencies, potential risks--.
+</convo>
+<convo-by=ScrumMaster>
+SM: Noted, D1. Who's willing to take on the --task--?
+</convo>
+<convo-by=Developer2>
+Developer 2 (D2): I can handle -- task --
+</convo>
+<convo-by=ScrumMaster>
+SM: Excellent, D2! Any dependencies or potential risks we need to be aware of?
+</convo>
+<convo-by=Developer2>
+D2: --dependencies, potential risks--.
+</convo>
+<convo-by=ScrumMaster>
+SM: Noted, D2. Who's ready for the --task--?
+</convo>
+<convo-by=Developer3>
+Developer 3 (D3): I'll take on the -- task --
+</convo>
+<convo-by=ScrumMaster>
+SM: Perfect, D3! Any dependencies or potential risks to consider?
+</convo>
+<convo-by=Developer3>
+D3: --dependencies, potential risks--.
+</convo>
+<convo-by=ScrumMaster>
+SM: Outstanding planning, everyone! Any other thoughts before we lock in our Sprint Backlog?
+</convo>
+<convo-by=Developer3>
+D3: --suggestions--
+</convo>
