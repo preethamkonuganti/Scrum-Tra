@@ -11,8 +11,6 @@ import java.awt.*;
  * enables user to change the task status
  */
 public class ScrumTaskDetailsDialog extends Entity{
-
-
     public ScrumTaskDetailsDialog(GamePanel gp, KeyHandler kh, int x, int y, int width, int height) {
         super(gp, kh);
         this.x = x;
@@ -29,7 +27,6 @@ public class ScrumTaskDetailsDialog extends Entity{
     public void draw(Graphics2D g) {
         g.setColor(Color.decode("#5F259F"));
         g.fillRect(x, y, width, height);
-
         g.setColor(Color.white);
         g.fillRect(x+4, y+4,width-8, height-8);
     }
