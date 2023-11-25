@@ -1,0 +1,40 @@
+<convo-by=SM>
+Scrum Master (SM): Greetings, everyone, as we gather for our sprint retrospective. Let's commence our discussion. What notable successes can we acknowledge from this sprint?
+</convo>
+<convo-by=D1>
+Developer 1 (D1): --positive aspects--
+</convo>
+<convo-by=D2>
+Developer 2 (D2): --positive aspects--
+</convo>
+<convo-by=D3>
+Developer 3 (D3): --positive aspects--
+</convo>
+<convo-by=D4>
+Developer 4 (D4): --positive aspects--
+</convo>
+<convo-by=SM>
+SM: Kudos to the team for your hard work! Excellent contributions.
+</convo>
+<convo-by=SM>
+SM: Now, let's reflect on what did not go as planned.
+</convo> 
+<convo-by=D1>
+Developer 1 (D1): --challenges or setbacks--
+</convo>
+<convo-by=D2>
+Developer 2 (D2): --challenges or setbacks--
+</convo>
+<convo-by=D3>
+Developer 3 (D3): --challenges or setbacks--
+</convo>
+<convo-by=D4>
+Developer 4 (D4): --challenges or setbacks--
+</convo>
+<convo-by=SM>
+SM: I appreciate your openness in highlighting these issues. Let's document them and brainstorm solutions.
+</convo-by=SM>
+<convo-by=SM>
+SM: Moving on, how could we have improved? Are there any suggestions or areas for refinement?
+</convo>
+
