@@ -1,0 +1,53 @@
+<convo-by=SM>
+SM: Good morning, team! How's everyone doing? Let's kick off our daily standup.
+Who'd like to start?
+</convo-by=SM>
+
+<convo-by=D1>
+D1: I'll go first. Yesterday, I finished ---task--- and accomplished -- % of my assigned work.
+</convo-by=D1>
+
+<convo-by=SM>    
+SM: Great job, D1! What's on your agenda for today?
+</convo-by=SM>
+
+<convo-by=D1>
+D1: Today, I'll be focusing on -- task --
+</convo-by=D1>
+
+<convo-by=SM>
+SM: Sounds good. Any obstacles or challenges in your way?
+</convo-by=SM>
+
+<convo-by=D1>
+D1: No blockers for me. Smooth sailing so far.
+</convo-by=D1>
+
+<convo-by=SM>
+SM: D2, what were you up to yesterday?
+</convo-by=SM>
+
+<convo-by=D2>
+D2: Yesterday, I was working on ---task--- and completed -- % of my work.
+</convo-by=D2>
+
+<convo-by=SM>
+SM: Good progress, D2! What's on your plate for today?
+</convo-by=SM>
+
+<convo-by=D2>
+D2: Today, I'll be diving into ---task---. 
+</convo-by=D2>
+
+<convo-by=SM>
+SM: That sounds promising. Any hurdles you're facing?
+</convo-by=SM>
+
+<convo-by=D2>
+D2: No blockers at the moment. Everything is on track.
+</convo-by=D2>
+
+<convo-by=SM>
+SM: Thanks, D2. Who's up next to share?
+</convo-by=SM>
+
