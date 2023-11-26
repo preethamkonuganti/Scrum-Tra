@@ -11,25 +11,58 @@ import java.awt.*;
  * enables user to change the task status
  */
 public class ScrumTaskDetailsDialog extends Entity{
-    public ScrumTaskDetailsDialog(GamePanel gp, KeyHandler kh, int x, int y, int width, int height) {
+
+    public enum TASK_STATUS {
+        NEW,
+        IN_PROGRESS,
+        READY_For_TEST,
+        DONE,
+        BLOCKER
+    };
+
+    private String title;
+    private int taskId;
+    private int assignedTo;
+
+    private TASK_STATUS status;
+
+    private ImageButton closeBtn;
+
+    public ScrumTaskDetailsDialog(GamePanel gp, KeyHandler kh, int x, int y) {
         super(gp, kh);
         this.x = x;
         this.y = y;
-        this.width = width;
-        this.height = height;
+        this.width = 300;
+        this.height = 180;
+
     }
 
-    public void setScrumTaskDetails(){
-
+    public void setScrumTaskDetails(String title, int taskId, int assignedTo, TASK_STATUS status){
+        this.title = title;
+        this.taskId = taskId;
+        this.assignedTo = assignedTo;
+        this.status =status;
     }
 
     @Override
     public void draw(Graphics2D g) {
         g.setColor(Color.decode("#5F259F"));
         g.fillRect(x, y, width, height);
+
         g.setColor(Color.white);
         g.fillRect(x+4, y+4,width-8, height-8);
+
+        g.setFont(new Font("Serif", Font.ITALIC, 20));
+        g.setColor(Color.decode("#5F259F"));
+        g.drawString(title,x+20,y+24);
+
+        g.drawString("Task ID = \t\t\t"+taskId,x+20,y+64);
+
+        g.drawString("Assigned to = \t\t\t"+assignedTo,x+20,y+104);
+
+        g.drawString("Task status = \t\t\t"+status,x+20,y+144);
     }
+
 
     @Override
     public void update() {
