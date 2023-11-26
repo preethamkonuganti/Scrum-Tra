@@ -56,4 +56,19 @@ public class SimulationStoryParser {
 
         return sequence;
     }
+public void parseStringsToSimulationFile(List<String> dialogues, String title){
+        File file = new File(getClass().getResource("/simulation_story/"+title+".txt").getFile());
+        try {
+            if(file.createNewFile()){
+                FileWriter fileWriter = new FileWriter("/simulation_story/"+title+".txt");
+                BufferedWriter writer = new BufferedWriter(fileWriter);
+                for(String d : dialogues){
+                    writer.append(d);
+                }
+                writer.close();
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
