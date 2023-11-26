@@ -26,5 +26,36 @@ public class SimulationStoryParserTest {
             fail("Method should not throw an exception");
         }
     }
+@Test
+    public void testParseStoryToSimulationFile(){
+        ArrayList<String> strings = new ArrayList<>();
+        strings.add("Testing 1");
+        strings.add("Testing 2");
+        strings.add("Testing 3");
+        strings.add("Testing 4");
+        strings.add("Testing 5");
+        strings.add("Testing 6");
+
+        try{
+            SimulationStoryParser.getInstance().parseStringsToSimulationFile(strings,"test");
+            File file = new File("test.txt");
+            if(!file.exists()){
+                fail("File creation failed");
+            }
+            else{
+                ArrayList<String> sequence = new ArrayList<>();
+                Scanner sc = new Scanner(file);
+                while (sc.hasNextLine()) {
+                    String line = sc.nextLine();
+                    sequence.add(line.trim());
+                }
+
+
+            }
+        } catch (FileNotFoundException e) {
+            fail("File creation failed.");
+        }
+
+    }
 
 }
