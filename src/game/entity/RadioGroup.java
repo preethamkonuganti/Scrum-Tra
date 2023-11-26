@@ -25,10 +25,7 @@ public class RadioGroup extends Entity{
     @Override
     public void draw(Graphics2D g) {
         g.setColor(Color.decode("#5F259F"));
-        g.fillRect(x, y, width, height);
-
-//        g.setColor(Color.white);
-//        g.fillRect(x+4, y+4,width-8, height-8);
+        g.drawRect(x-10, y-10, width, height);
 
         buttons.forEach(new Consumer<CustomRadioButton>() {
             @Override
@@ -44,16 +41,18 @@ public class RadioGroup extends Entity{
     }
 
     public void addOption(String title){
-        CustomRadioButton radioButton = new CustomRadioButton(gp, kh, x, y+buttons.size()*60, title);
+        CustomRadioButton radioButton = new CustomRadioButton(gp, kh, x, y+buttons.size()*60, title, buttons.size());
         buttons.add(radioButton);
-        if(width < radioButton.getTitleWidth()){
-            width  = radioButton.getTitleWidth();
+        if(width < radioButton.getTitleWidth()+60){
+            width  = radioButton.getTitleWidth()+60;
         }
         height += 60;
+
         radioButton.setOnClickListener(new MouseClickInterface() {
+            final int id = buttons.size();
             @Override
             public void onClicked() {
-                System.out.println();
+                System.out.println("clicked "+id);
             }
         });
     }
