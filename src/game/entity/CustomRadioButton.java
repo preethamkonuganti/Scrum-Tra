@@ -8,10 +8,10 @@ import java.awt.*;
 public class CustomRadioButton extends Entity{
 
     private String title;
-    private int id;
+    public int id;
 
     private boolean isChecked = false;
-    public CustomRadioButton(GamePanel gp, KeyHandler kh, int x, int y, String title) {
+    public CustomRadioButton(GamePanel gp, KeyHandler kh, int x, int y, String title, int id) {
         super(gp, kh);
         this.x = x;
         this.y = y;
@@ -33,11 +33,11 @@ public class CustomRadioButton extends Entity{
 
         if(isChecked){
             g.setColor(Color.white);
-            g.fillRect(x+15,y+11,18,18); //checked button rendering
+            g.fillOval(x+15,y+11,18,18); //checked button rendering
         }
 
-        g.setColor(Color.blue);
-        g.drawRect(x,y, g.getFontMetrics().stringWidth(title)+64,height);
+//        g.setColor(Color.black);
+//        g.drawRect(x,y, g.getFontMetrics().stringWidth(title)+64,height);
     }
 
     @Override
@@ -53,12 +53,10 @@ public class CustomRadioButton extends Entity{
 
     private void toggleCheck() {
         System.out.println("Toggled");
-        if(isChecked){
-            isChecked = false;
-        }
-        else {
+        if(!isChecked){
             isChecked = true;
         }
+
     }
 
     public void setChecked(boolean isChecked){
@@ -74,6 +72,10 @@ public class CustomRadioButton extends Entity{
     }
 
     private void setFont(Graphics2D g){
-        g.setFont(new Font("Serif", Font.ITALIC, 28));
+        g.setFont(new Font("Serif", Font.ITALIC, 24));
+    }
+
+    public String getTitle() {
+        return title;
     }
 }

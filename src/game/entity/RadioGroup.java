@@ -14,6 +14,7 @@ import java.util.function.Consumer;
 public class RadioGroup extends Entity{
 
     private ArrayList<CustomRadioButton> buttons;
+    private int selectedIndex;
     public RadioGroup(GamePanel gp, KeyHandler kh, int x, int y) {
         super(gp, kh);
         this.x = x;
@@ -25,7 +26,7 @@ public class RadioGroup extends Entity{
     @Override
     public void draw(Graphics2D g) {
         g.setColor(Color.decode("#5F259F"));
-        g.drawRect(x-10, y-10, width, height);
+        g.fillRect(x-10, y-10, width, height);
 
         buttons.forEach(new Consumer<CustomRadioButton>() {
             @Override
@@ -33,6 +34,8 @@ public class RadioGroup extends Entity{
                 customRadioButton.draw(g);
             }
         });
+
+
     }
 
     @Override
@@ -52,8 +55,21 @@ public class RadioGroup extends Entity{
             final int id = buttons.size();
             @Override
             public void onClicked() {
-                System.out.println("clicked "+id);
+//                System.out.println("clicked "+id);
+                selectedIndex = id-1;
+
+                for(int i=0;i< buttons.size();i++){
+                    if(i != selectedIndex){
+                        buttons.get(i).setChecked(false);
+                    }
+                }
+
+                System.out.println("Selected  : "+getSelected());
             }
         });
+    }
+
+    public String getSelected(){
+        return buttons.get(selectedIndex).getTitle();
     }
 }
