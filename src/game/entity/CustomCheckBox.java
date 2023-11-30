@@ -67,7 +67,7 @@ public class CustomCheckBox extends Entity{
     }
 
     public int getTitleWidth(){
-        return (int)((title.length()*36)*0.56);
+        return (int)((title.length()*31)*0.56);
     }
 
     private void setFont(Graphics2D g){

@@ -54,6 +54,6 @@ public class Text extends Entity {
     }
 
     public int getStringWidth(){
-        return (int)((value.length()*36)*0.56);
+        return (int)((value.length()*31)*0.56);
     }
 }
