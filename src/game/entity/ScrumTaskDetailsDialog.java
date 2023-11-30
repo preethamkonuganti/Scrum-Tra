@@ -2,6 +2,7 @@ package game.entity;
 
 import game.GamePanel;
 import game.event.KeyHandler;
+import game.event.MouseClickInterface;
 
 import java.awt.*;
 
@@ -11,6 +12,12 @@ import java.awt.*;
  * enables user to change the task status
  */
 public class ScrumTaskDetailsDialog extends Entity{
+
+    public interface ScreenListener{
+        public void onDialogClosed();
+    }
+
+    private ScreenListener screenListener;
 
     public enum TASK_STATUS {
         NEW,
@@ -35,6 +42,16 @@ public class ScrumTaskDetailsDialog extends Entity{
         this.width = 300;
         this.height = 180;
 
+
+        closeBtn = new ImageButton(gp,kh,x+220,y+10,40,40);
+        closeBtn.setBackgroundImage("/assets/back.png");
+
+        closeBtn.setOnClickListener(new MouseClickInterface() {
+            @Override
+            public void onClicked() {
+                screenListener.onDialogClosed();
+            }
+        });
     }
 
     public void setScrumTaskDetails(String title, int taskId, int assignedTo, TASK_STATUS status){
@@ -61,11 +78,17 @@ public class ScrumTaskDetailsDialog extends Entity{
         g.drawString("Assigned to = \t\t\t"+assignedTo,x+20,y+104);
 
         g.drawString("Task status = \t\t\t"+status,x+20,y+144);
+
+        closeBtn.draw(g);
     }
 
 
     @Override
     public void update() {
 
+    }
+
+    public void setScreenListener(ScreenListener screenListener) {
+        this.screenListener = screenListener;
     }
 }
