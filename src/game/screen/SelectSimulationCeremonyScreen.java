@@ -13,32 +13,27 @@ import game.navigation.Navigation;
 import java.awt.*;
 import java.util.function.Consumer;
 
-public class SelectSimulationCeremonyScreen extends Screen{
+public class SelectSimulationCeremonyScreen extends Screen {
     public SelectSimulationCeremonyScreen(GamePanel gp, KeyHandler kh) {
         super(gp, kh);
 
-        Text title = new Text("Select Simulation Ceremonies",gp ,kh);
-        title.x = (gp.width-title.getStringWidth())/2;
+        Text title = new Text("Select Simulation Ceremonies", gp, kh);
+        title.x = (gp.width - title.getStringWidth()) / 2;
         title.y = 100;
 
-        ImageButton btn = new ImageButton(gp,kh,title.x-150,40,140, 140);
+        ImageButton btn = new ImageButton(gp, kh, title.x - 150, 40, 140, 140);
         btn.setBackgroundImage("/seller/seller_still.png");
 
-        CustomCheckBox sprintPlanning = new CustomCheckBox(gp ,kh,
-                340, 240,"Sprint Planning");
+        CustomCheckBox sprintPlanning = new CustomCheckBox(gp, kh, 340, 240, "Sprint Planning");
         sprintPlanning.setChecked(false);
 
-        CustomCheckBox sprintRetrospective = new CustomCheckBox(gp ,kh,
-                340, 340,"Sprint Retrospective");
+        CustomCheckBox sprintRetrospective = new CustomCheckBox(gp, kh, 340, 340, "Sprint Retrospective");
 
-        CustomCheckBox sprintReview = new CustomCheckBox(gp ,kh,
-                340, 440,"Sprint Review");
+        CustomCheckBox sprintReview = new CustomCheckBox(gp, kh, 340, 440, "Sprint Review");
 
-        CustomCheckBox dailyStandup = new CustomCheckBox(gp ,kh,
-                340, 540,"Daily Standups");
+        CustomCheckBox dailyStandup = new CustomCheckBox(gp, kh, 340, 540, "Daily Standups");
 
-
-        ImageButton g3 = new ImageButton(gp,kh, gp.getWidth()-240, 60,160,80);
+        ImageButton g3 = new ImageButton(gp, kh, gp.getWidth() - 240, 60, 160, 80);
         g3.setBackgroundImage("/next.png");
 
         entities.add(title);
@@ -49,21 +44,18 @@ public class SelectSimulationCeremonyScreen extends Screen{
         entities.add(dailyStandup);
         entities.add(g3);
 
-
         g3.setOnClickListener(new MouseClickInterface() {
             @Override
             public void onClicked() {
-
                 SimulationCeremonyConfig.getInstance().setSprintPlanningSelected(sprintPlanning.isChecked());
                 SimulationCeremonyConfig.getInstance().setSprintReviewSelected(sprintReview.isChecked());
                 SimulationCeremonyConfig.getInstance().setSprintRetrospectiveSelected(sprintRetrospective.isChecked());
                 SimulationCeremonyConfig.getInstance().setDailyStandupSelected(dailyStandup.isChecked());
 
-                System.out.println("SP : "+SimulationCeremonyConfig.getInstance().isSprintPlanningSelected());
-                System.out.println("SR : "+SimulationCeremonyConfig.getInstance().isSprintReviewSelected());
-                System.out.println("SRP : "+SimulationCeremonyConfig.getInstance().isSprintRetrospectiveSelected());
-                System.out.println("DS : "+SimulationCeremonyConfig.getInstance().isDailyStandupSelected());
-
+                System.out.println("SP : " + SimulationCeremonyConfig.getInstance().isSprintPlanningSelected());
+                System.out.println("SR : " + SimulationCeremonyConfig.getInstance().isSprintReviewSelected());
+                System.out.println("SRP : " + SimulationCeremonyConfig.getInstance().isSprintRetrospectiveSelected());
+                System.out.println("DS : " + SimulationCeremonyConfig.getInstance().isDailyStandupSelected());
 
                 Navigation.getInstance().navigateToNext();
             }
@@ -72,31 +64,30 @@ public class SelectSimulationCeremonyScreen extends Screen{
         sprintPlanning.setOnClickListener(new MouseClickInterface() {
             @Override
             public void onClicked() {
-
+                // Method is intentionally left blank as no action is required on this event
             }
         });
 
         sprintRetrospective.setOnClickListener(new MouseClickInterface() {
             @Override
             public void onClicked() {
-
+                // Method is intentionally left blank as no action is required on this event
             }
         });
 
         sprintReview.setOnClickListener(new MouseClickInterface() {
             @Override
             public void onClicked() {
-
+                // Method is intentionally left blank as no action is required on this event
             }
         });
 
         dailyStandup.setOnClickListener(new MouseClickInterface() {
             @Override
             public void onClicked() {
-
+                // Method is intentionally left blank as no action is required on this event
             }
         });
-
     }
 
     @Override

@@ -6,34 +6,36 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class SimulationStoryParser {
+public final class SimulationStoryParser { // Make the class final
 
-    private static SimulationStoryParser instance = null;
-    private SimulationStoryParser(){
+    private SimulationStoryParser() {
+    }
+
+    // Inner static class for thread-safe, lazy initialization
+    private static class Holder {
+        private static final SimulationStoryParser INSTANCE = new SimulationStoryParser();
     }
 
     public static SimulationStoryParser getInstance() {
-        if(instance == null)
-            instance = new SimulationStoryParser();
-        return instance;
+        return Holder.INSTANCE;
     }
-    public static List<String> parseSim(String fpath){
+
+    public static List<String> parseSim(String fpath) {
         List<String> sim = getInstance().parseFileIntoSequence(fpath);
         boolean isConvoOpen = false;
         List<String> res = new ArrayList<>();
         String by = "";
-        for(String s : sim){
-            if(s.startsWith("<convo")){
-                by = s.substring(10,s.length()-1);
+        for (String s : sim) {
+            if (s.startsWith("<convo")) {
+                by = s.substring(10, s.length() - 1);
                 isConvoOpen = true;
                 continue;
-            }
-            else if(s.startsWith("</convo>")){
+            } else if (s.startsWith("</convo>")) {
                 isConvoOpen = false;
                 continue;
             }
-            if(isConvoOpen){
-                res.add(by + " > "+s);
+            if (isConvoOpen) {
+                res.add(by + " > " + s);
             }
         }
         return res;
@@ -41,15 +43,14 @@ public class SimulationStoryParser {
 
     public List<String> parseFileIntoSequence(String fPath) {
         File file = new File(getClass().getResource(fPath).getFile());
-        ArrayList<String> sequence = new ArrayList<>();
-        Scanner sc = null;
-        try {
-            sc = new Scanner(file);
+        List<String> sequence = new ArrayList<>(); // Use List instead of ArrayList
+
+        // Try-with-resources for Scanner
+        try (Scanner sc = new Scanner(file)) {
             while (sc.hasNextLine()) {
                 String line = sc.nextLine();
                 sequence.add(line.trim());
             }
-
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
