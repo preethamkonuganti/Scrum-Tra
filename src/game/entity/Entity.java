@@ -13,9 +13,11 @@ public abstract class Entity implements Renderer, MouseClickInterface, Lifecycle
 
     private MouseClickInterface mouseClickListener;
 
-    public int x,y;
+    public int x;
+    public int y;
 
-    int width, height;
+    int width;
+    int height;
     GamePanel gp;
     KeyHandler kh;
 

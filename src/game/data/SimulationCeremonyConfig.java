@@ -16,8 +16,9 @@ public class SimulationCeremonyConfig {
     }
 
     public static SimulationCeremonyConfig getInstance(){
-        if(instance == null)
+        if(instance == null){
             instance = new SimulationCeremonyConfig();
+        }
         return instance;
     }
 

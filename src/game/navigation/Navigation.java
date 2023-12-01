@@ -21,8 +21,9 @@ public class Navigation {
     }
 
     public static Navigation getInstance() {
-        if(instance == null)
+        if(instance == null){
             instance = new Navigation();
+        }
         return instance;
     }
 

@@ -55,8 +55,9 @@ public class CustomTextInput extends Entity{
     }
 
     private void filter(){
-        if(value.length()<2)
+        if(value.length()<2){
             return;
+        }
         finalVal = ""+value.charAt(0);
         for(int i = 1;i<value.length();i++){
             if(value.charAt(i-1) != value.charAt(i))
