@@ -15,8 +15,8 @@ public class CustomCheckBox extends Entity{
         this.x = x;
         this.y = y;
         this.height = 40;
-        this.width = getTitleWidth();
         this.title = title;
+        this.width = getTitleWidth();
     }
 
     @Override

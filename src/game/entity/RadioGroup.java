@@ -14,7 +14,7 @@ import java.util.function.Consumer;
 public class RadioGroup extends Entity{
 
     private ArrayList<CustomRadioButton> buttons;
-    private int selectedIndex;
+    private int selectedIndex = -1;
     public RadioGroup(GamePanel gp, KeyHandler kh, int x, int y) {
         super(gp, kh);
         this.x = x;
@@ -70,6 +70,30 @@ public class RadioGroup extends Entity{
     }
 
     public String getSelected(){
+        if(selectedIndex == -1) {
+            return "";
+        }
         return buttons.get(selectedIndex).getTitle();
+    }
+
+    public int getSelectedIndex(){
+        return selectedIndex;
+    }
+
+    public void setSelected(int index){
+        selectedIndex = index;
+        buttons.get(index).setChecked(true);
+    }
+
+    @Override
+    public void pauseObserver() {
+        buttons.forEach(new Consumer<CustomRadioButton>() {
+            @Override
+            public void accept(CustomRadioButton customRadioButton) {
+                customRadioButton.pauseObserver();
+            }
+        });
+
+        super.pauseObserver();
     }
 }
