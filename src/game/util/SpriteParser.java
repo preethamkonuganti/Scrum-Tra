@@ -9,7 +9,13 @@ import java.util.Scanner;
 public final class SpriteParser { // Make the class final
 
     // Private constructor to prevent instantiation
+
+    String path;
     private SpriteParser() {
+        File file  = new File("_");
+        path  = file.getAbsolutePath();
+        System.out.println(path);
+        path  = path.substring(0,path.length()-1)+"res";
     }
 
     // Inner static class for thread-safe, lazy initialization of the instance
@@ -22,17 +28,39 @@ public final class SpriteParser { // Make the class final
         return Holder.INSTANCE;
     }
 
-    public List<String> parseFileIntoSequence(String fPath) {
-        File file = new File(getClass().getResource(fPath).getFile());
-        List<String> sequence = new ArrayList<>(); // Use List instead of ArrayList
+    public static List<String> parseSim(String fpath){
+        List<String> sim = getInstance().parseFileIntoSequence(fpath);
+        boolean isConvoOpen = false;
+        List<String> res = new ArrayList<>();
+        String by = "";
+        for(String s : sim){
+            if(s.startsWith("<convo")){
+                by = s.substring(10,s.length()-1);
+                isConvoOpen = true;
+                continue;
+            }
+            else if(s.startsWith("</convo>")){
+                isConvoOpen = false;
+                continue;
+            }
+            if(isConvoOpen){
+                res.add(by + " > "+s);
+            }
+        }
+        return res;
+    }
 
-        // Try-with-resources for automatic resource management
-        try (Scanner sc = new Scanner(file)) {
+    public List<String> parseFileIntoSequence(String fPath) {
+        File file = new File(path+fPath);
+        ArrayList<String> sequence = new ArrayList<>();
+        Scanner sc = null;
+        try {
+            sc = new Scanner(file);
             while (sc.hasNextLine()) {
                 String line = sc.nextLine();
                 sequence.add(line.trim());
-                System.out.println(line);
             }
+
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }

@@ -1,32 +1,37 @@
 package game.util;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public final class SimulationStoryParser { // Make the class final
+public class SimulationStoryParser {
 
-    private SimulationStoryParser() {
-    }
-
-    // Inner static class for thread-safe, lazy initialization
-    private static class Holder {
-        private static final SimulationStoryParser INSTANCE = new SimulationStoryParser();
+    private static SimulationStoryParser instance = null;
+    static String path;
+    private SimulationStoryParser(){
+        File file  = new File("_");
+        path  = file.getAbsolutePath();
+        System.out.println(path);
+        path  = path.substring(0,path.length()-1)+"res";
+        System.out.println(path);
     }
 
     public static SimulationStoryParser getInstance() {
-        return Holder.INSTANCE;
+        if(instance == null)
+            instance = new SimulationStoryParser();
+        return instance;
     }
-
     public static List<String> parseSim(String fpath) {
-        List<String> sim = getInstance().parseFileIntoSequence(fpath);
+        List<String> sim = getInstance().parseFileIntoSequence(path+fpath);
         boolean isConvoOpen = false;
         List<String> res = new ArrayList<>();
         String by = "";
         for (String s : sim) {
-            if (s.startsWith("<convo")) {
+            if(s.startsWith("<task")){
+                res.add(s);
+            }
+            else if (s.startsWith("<convo")) {
                 by = s.substring(10, s.length() - 1);
                 isConvoOpen = true;
                 continue;
@@ -42,7 +47,7 @@ public final class SimulationStoryParser { // Make the class final
     }
 
     public List<String> parseFileIntoSequence(String fPath) {
-        File file = new File(getClass().getResource(fPath).getFile());
+        File file = new File(fPath);
         List<String> sequence = new ArrayList<>(); // Use List instead of ArrayList
 
         // Try-with-resources for Scanner
@@ -56,5 +61,20 @@ public final class SimulationStoryParser { // Make the class final
         }
 
         return sequence;
+    }
+
+    public void parseStringsToSimulationFile(List<String> dialogues, String title){
+        File file = new File(title+".txt");
+        try {
+            file.createNewFile();
+                FileWriter fileWriter = new FileWriter(title+".txt");
+                BufferedWriter writer = new BufferedWriter(fileWriter);
+                for(String d : dialogues){
+                    writer.append(d);
+                }
+                writer.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
