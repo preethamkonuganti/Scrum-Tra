@@ -1,6 +1,7 @@
 package game.entity;
 
 import game.GamePanel;
+import game.data.TeamMember;
 import game.event.KeyHandler;
 import game.event.MouseClickInterface;
 
@@ -13,7 +14,6 @@ import java.util.ArrayList;
  */
 public class UserSelectionDialog extends Entity{
 
-    private int taskId;
     private int assignedTo;
     private ImageButton closeBtn;
 
@@ -21,12 +21,16 @@ public class UserSelectionDialog extends Entity{
 
     private ScrumTaskDetailsDialog.ScreenListener screenListener;
 
+    private ArrayList<TeamMember> members;
+
     public UserSelectionDialog(GamePanel gp, KeyHandler kh, int x, int y) {
         super(gp, kh);
         this.x = x;
         this.y = y;
         this.width = 300;
         this.height = 380;
+
+        members = new ArrayList<>();
 
         closeBtn = new ImageButton(gp,kh,x+220,y+10,40,40);
         closeBtn.setBackgroundImage("/assets/back.png");
@@ -37,7 +41,7 @@ public class UserSelectionDialog extends Entity{
         closeBtn.setOnClickListener(new MouseClickInterface() {
             @Override
             public void onClicked() {
-                screenListener.onDialogClosed();
+                screenListener.onAssignToDialogClosed();
             }
         });
     }
@@ -74,7 +78,23 @@ public class UserSelectionDialog extends Entity{
         return usersGroup.getSelected();
     }
 
+    public int getSelectedUserIndex(){
+        return usersGroup.getSelectedIndex();
+    }
+
     public void setScreenListener(ScrumTaskDetailsDialog.ScreenListener screenListener) {
         this.screenListener = screenListener;
     }
+
+    public void removeObservers(){
+        closeBtn.pauseObserver();
+        usersGroup.pauseObserver();
+        pauseObserver();
+    }
+
+    public void setAssignedTo(int assignedTo) {
+        this.assignedTo = assignedTo;
+        usersGroup.setSelected(assignedTo);
+    }
+
 }
