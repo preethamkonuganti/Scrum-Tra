@@ -1,9 +1,10 @@
 package game.screen;
 
 import game.GamePanel;
-import game.entity.*;
 import game.entity.Button;
-import game.entity.Character;
+import game.entity.Entity;
+import game.entity.ImageButton;
+import game.entity.Text;
 import game.event.KeyHandler;
 import game.event.MouseClickInterface;
 import game.navigation.Navigation;
@@ -12,6 +13,8 @@ import java.awt.*;
 import java.util.function.Consumer;
 
 public class SelectRoleScreen extends Screen{
+
+    String selectedRole = "scrum master";
     public SelectRoleScreen(GamePanel gp, KeyHandler kh) {
         super(gp, kh);
 
@@ -26,7 +29,7 @@ public class SelectRoleScreen extends Screen{
         beginner.x = (gp.width-beginner.getStringWidth())/2;
         beginner.y = 240;
         beginner.setTextColor(Color.WHITE);
-        beginner.setStrokeColor(Color.BLACK);
+        beginner.setStrokeColor(Color.blue);
         beginner.setBackgroundColor(Color.decode("#55ACEE"));
 
 
@@ -61,6 +64,27 @@ public class SelectRoleScreen extends Screen{
             }
         });
 
+        beginner.setOnClickListener(new MouseClickInterface() {
+            @Override
+            public void onClicked() {
+                selectedRole = "Scrum master";
+            }
+        });
+
+        advanced.setOnClickListener(new MouseClickInterface() {
+            @Override
+            public void onClicked() {
+                selectedRole = "developer";
+            }
+        });
+
+        expert.setOnClickListener(new MouseClickInterface() {
+            @Override
+            public void onClicked() {
+                selectedRole = "product owner";
+            }
+        });
+
 
     }
 
@@ -72,6 +96,11 @@ public class SelectRoleScreen extends Screen{
                 entity.draw(g);
             }
         });
+
+        g.setFont(new Font("Serif", Font.ITALIC, 28));
+        g.setColor(Color.white);
+        g.drawString("Selected Role : ",1000, 600);
+        g.drawString(selectedRole,1020,660);
     }
 
     @Override

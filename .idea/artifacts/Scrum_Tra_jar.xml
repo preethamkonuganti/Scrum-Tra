@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="Scrum-Tra:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Scrum_Tra_jar</output-path>
+    <root id="archive" name="Scrum-Tra.jar">
+      <element id="module-output" name="Scrum-Tra" />
+    </root>
+  </artifact>
+</component>

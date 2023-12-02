@@ -13,6 +13,8 @@ import java.awt.*;
 import java.util.function.Consumer;
 
 public class SelectProficiencyScreen extends Screen{
+
+    String selectedProficiency = "beginner";
     public SelectProficiencyScreen(GamePanel gp, KeyHandler kh) {
         super(gp, kh);
 
@@ -64,6 +66,28 @@ public class SelectProficiencyScreen extends Screen{
             }
         });
 
+
+        beginner.setOnClickListener(new MouseClickInterface() {
+            @Override
+            public void onClicked() {
+                selectedProficiency = "beginner";
+            }
+        });
+
+        advanced.setOnClickListener(new MouseClickInterface() {
+            @Override
+            public void onClicked() {
+                selectedProficiency = "advanced";
+            }
+        });
+
+        expert.setOnClickListener(new MouseClickInterface() {
+            @Override
+            public void onClicked() {
+                selectedProficiency = "expert";
+            }
+        });
+
     }
 
     @Override
@@ -74,6 +98,11 @@ public class SelectProficiencyScreen extends Screen{
                 entity.draw(g);
             }
         });
+
+        g.setFont(new Font("Serif", Font.ITALIC, 28));
+        g.setColor(Color.white);
+        g.drawString("Selected Role : ",1000, 600);
+        g.drawString(selectedProficiency,1020,660);
     }
 
     @Override

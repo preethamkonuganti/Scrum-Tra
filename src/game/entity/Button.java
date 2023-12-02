@@ -11,6 +11,8 @@ public class Button extends Text implements ButtonInterface{
 
     public Button(String value, GamePanel gp, KeyHandler kh) {
         super(value, gp, kh);
+        width = getStringWidth();
+        height = 40;
     }
 
     @Override
@@ -36,9 +38,11 @@ public class Button extends Text implements ButtonInterface{
     @Override
     public void draw(Graphics2D g) {
         g.setColor(strokeColor);
-        g.fill3DRect(x-paddingStart-4,y-36-4,getStringWidth()+paddingEnd+8,36+paddingBottom+paddingTop+8,false);
+        g.fill3DRect(x,y,getStringWidth(),50,false);
+        g.setFont(new Font("Serif", Font.ITALIC, 24));
+        g.setColor(Color.white);
+        g.drawString(value,x+20,y+20);
 
-        super.draw(g);
     }
 
     public void setPaddings(int s, int e, int t, int b){
