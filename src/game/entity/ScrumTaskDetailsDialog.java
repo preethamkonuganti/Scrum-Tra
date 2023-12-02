@@ -1,6 +1,7 @@
 package game.entity;
 
 import game.GamePanel;
+import game.data.ScrumTask;
 import game.event.KeyHandler;
 import game.event.MouseClickInterface;
 
@@ -14,7 +15,19 @@ import java.awt.*;
 public class ScrumTaskDetailsDialog extends Entity{
 
     public interface ScreenListener{
-        public void onDialogClosed();
+        public void onScrumTaskDetailsDialogClosed();
+
+        public void onTaskStatusDialogClosed();
+
+        public void onAssignToDialogClosed();
+
+        public void showTaskStatusDialog(ScrumTask task);
+
+        public void showAssignedToDialog(ScrumTask task);
+
+        public void showScrumBoard();
+
+        public void closeScrumBoard();
     }
 
     private ScreenListener screenListener;
@@ -22,18 +35,18 @@ public class ScrumTaskDetailsDialog extends Entity{
     public enum TASK_STATUS {
         NEW,
         IN_PROGRESS,
-        READY_For_TEST,
+        TEST_READY,
         DONE,
         BLOCKER
     };
 
-    private String title;
-    private int taskId;
-    private int assignedTo;
-
-    private TASK_STATUS status;
+    private ScrumTask task;
 
     private ImageButton closeBtn;
+
+    private ImageButton showTaskStatusBtn;
+
+    private ImageButton showAssignedToBtn;
 
     public ScrumTaskDetailsDialog(GamePanel gp, KeyHandler kh, int x, int y) {
         super(gp, kh);
@@ -42,23 +55,38 @@ public class ScrumTaskDetailsDialog extends Entity{
         this.width = 300;
         this.height = 180;
 
-
-        closeBtn = new ImageButton(gp,kh,x+220,y+10,40,40);
+        closeBtn = new ImageButton(gp,kh,x+270,y+10,20,20);
         closeBtn.setBackgroundImage("/assets/back.png");
 
         closeBtn.setOnClickListener(new MouseClickInterface() {
             @Override
             public void onClicked() {
-                screenListener.onDialogClosed();
+                screenListener.onScrumTaskDetailsDialogClosed();
             }
         });
-    }
 
-    public void setScrumTaskDetails(String title, int taskId, int assignedTo, TASK_STATUS status){
-        this.title = title;
-        this.taskId = taskId;
-        this.assignedTo = assignedTo;
-        this.status =status;
+        showTaskStatusBtn = new ImageButton(gp,kh,x+270,y+144,20,20);
+        showTaskStatusBtn.setBackgroundImage("/assets/back.png");
+
+        showTaskStatusBtn.setOnClickListener(new MouseClickInterface() {
+
+            @Override
+            public void onClicked() {
+                System.out.println("Closeee");
+                screenListener.showTaskStatusDialog(task);
+            }
+        });
+
+        showAssignedToBtn = new ImageButton(gp,kh,x+270,y+104,20,20);
+        showAssignedToBtn.setBackgroundImage("/assets/back.png");
+
+        showAssignedToBtn.setOnClickListener(new MouseClickInterface() {
+            @Override
+            public void onClicked() {
+                System.out.println("Closeee");
+                screenListener.showAssignedToDialog(task);
+            }
+        });
     }
 
     @Override
@@ -71,15 +99,17 @@ public class ScrumTaskDetailsDialog extends Entity{
 
         g.setFont(new Font("Serif", Font.ITALIC, 20));
         g.setColor(Color.decode("#5F259F"));
-        g.drawString(title,x+20,y+24);
+        g.drawString(task.getTitle(),x+20,y+24);
 
-        g.drawString("Task ID = \t\t\t"+taskId,x+20,y+64);
+        g.drawString("Task ID = \t\t\t"+task.getTaskId(),x+20,y+64);
 
-        g.drawString("Assigned to = \t\t\t"+assignedTo,x+20,y+104);
+        g.drawString("Assigned to = \t\t\t"+task.getAssignedTo(),x+20,y+104);
 
-        g.drawString("Task status = \t\t\t"+status,x+20,y+144);
+        g.drawString("Task status = \t\t\t"+task.getTaskStatus(),x+20,y+144);
 
         closeBtn.draw(g);
+        showTaskStatusBtn.draw(g);
+        showAssignedToBtn.draw(g);
     }
 
 
@@ -90,5 +120,20 @@ public class ScrumTaskDetailsDialog extends Entity{
 
     public void setScreenListener(ScreenListener screenListener) {
         this.screenListener = screenListener;
+    }
+
+    public void setScrumTask(ScrumTask task) {
+        this.task = task;
+    }
+
+    public void removeObservers(){
+        closeBtn.pauseObserver();
+        showTaskStatusBtn.pauseObserver();
+        showAssignedToBtn.pauseObserver();
+        pauseObserver();
+    }
+
+    public ScrumTask getTask() {
+        return task;
     }
 }
